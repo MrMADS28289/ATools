@@ -6,13 +6,17 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
 
+    /*** Using hook for shoing error ***/
     const [error, setError] = useState('');
+
+    /*** Handle form submit ***/
     const handleLogin = (e) => {
         e.preventDefault();
 
         const email = e.target.email.value;
         const password = e.target.password.value;
 
+        /*** Fetching provided login url ***/
         fetch('https://reqres.in/api/login', {
             method: 'POST',
             headers: {
@@ -22,6 +26,8 @@ const Login = () => {
         })
             .then(res => res.json())
             .then(result => {
+
+                /*** Result validation ***/
                 if (result.token) {
                     toast.success("Login Success Token " + result.token);
                     setError('');
@@ -36,6 +42,8 @@ const Login = () => {
     return (
         <>
             <Row>
+
+                { /*** Login form part ***/}
                 <Col className='col-lg-5 d-flex justify-content-center align-items-center'>
                     <div className='w-75'>
 
@@ -80,10 +88,12 @@ const Login = () => {
                     </div>
                 </Col>
 
+                { /*** Login form style part ***/}
                 <Col className='col-lg-7 d-none d-sm-none d-md-block'>
                     <img className='w-100' src={discussion} alt="" />
                 </Col>
 
+                { /*** For React Toastify ***/}
                 <ToastContainer />
             </Row>
         </>

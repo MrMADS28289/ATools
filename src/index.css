@@ -1,6 +1,7 @@
-/* Google font */
+/*** Google font ***/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+/*** Default style ***/
 body {
   margin: 0;
   padding: 0;
