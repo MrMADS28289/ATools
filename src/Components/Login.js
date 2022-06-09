@@ -23,15 +23,15 @@ const Login = () => {
             .then(res => res.json())
             .then(result => {
                 if (result.token) {
-                    toast.success("Login Success " + result.token);
+                    toast.success("Login Success Token " + result.token);
                     setError('');
+                    e.target.reset();
                 }
                 if (result.error) {
                     toast.error(result.error);
                     setError(result.error);
                 }
             })
-
     }
     return (
         <>
@@ -49,7 +49,8 @@ const Login = () => {
                                 className='mb-3'
                                 name='email'
                                 type="text"
-                                placeholder="Email Address" />
+                                placeholder="Email Address"
+                                required />
                             <Form.Control
                                 className='mb-3'
                                 name='password'
