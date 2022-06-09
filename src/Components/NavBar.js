@@ -3,7 +3,10 @@ import { Container, Navbar } from 'react-bootstrap';
 
 const NavBar = () => {
   return (
-    <Navbar expand="lg" className='border-bottom sticky-top'>
+    <Navbar
+      style={{ backgroundColor: '#ffffff' }}
+      expand="lg"
+      className='border-bottom sticky-top'>
       <Container>
         <Navbar.Brand href="#home">
           <p
