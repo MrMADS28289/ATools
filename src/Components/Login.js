@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Row, Form } from 'react-bootstrap';
 import discussion from '../Assets/Image/people-with-coffe.png';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
 
+    const [error, setError] = useState('');
     const handleLogin = (e) => {
         e.preventDefault();
 
@@ -18,8 +21,17 @@ const Login = () => {
             body: JSON.stringify({ email, password })
         })
             .then(res => res.json())
-            .then(result => console.log(result))
-        // console.log(email, password);
+            .then(result => {
+                if (result.token) {
+                    toast.success("Login Success " + result.token);
+                    setError('');
+                }
+                if (result.error) {
+                    toast.error(result.error);
+                    setError(result.error);
+                }
+            })
+
     }
     return (
         <>
@@ -44,6 +56,10 @@ const Login = () => {
                                 type="password"
                                 placeholder="Password" />
 
+                            {
+                                error && <p className='text-danger'>{error}</p>
+                            }
+
                             <input
                                 style={{ backgroundColor: "#023047" }}
                                 className='border-0 me-3 text-white px-3 py-2 fw-semibold w-100'
@@ -63,9 +79,11 @@ const Login = () => {
                     </div>
                 </Col>
 
-                <Col className='col-lg-7 d-sm-none d-lg-block'>
+                <Col className='col-lg-7 d-none d-sm-none d-md-block'>
                     <img className='w-100' src={discussion} alt="" />
                 </Col>
+
+                <ToastContainer />
             </Row>
         </>
     );

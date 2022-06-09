@@ -16,7 +16,7 @@ const NavBar = () => {
             className='fw-bolder fs-3'>ATools<span style={{ color: '#FB8500' }} className='fs-6 fw-bolder'>.</span>
           </p>
         </Navbar.Brand>
-        <div className='d-sm-none d-md-block'>
+        <div className='d-none d-sm-none d-md-block'>
           <button
             style={{ backgroundColor: "#023047" }}
             className='border-0 me-3 text-white px-3 py-2 fw-semibold'>Start Free Trial</button>
